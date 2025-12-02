@@ -1,0 +1,26 @@
+@Restaurants.API_HostAddress = https://localhost:7105
+
+
+GET {{Restaurants.API_HostAddress}}/api/weatherforecast/currentDay
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/weatherforecast/example
+
+###
+GET {{Restaurants.API_HostAddress}}/api/weatherforecast/23/currentDay?max=15
+
+###
+POST {{Restaurants.API_HostAddress}}/api/weatherforecast/
+Content-Type: application/json
+  "Jabub"
+
+  ###
+
+POST {{Restaurants.API_HostAddress}}/api/weatherforecast/generate?count=3
+Content-Type: application/json
+  {
+    "MinTemperatureC": 10,
+    "MaxTemperatureC": 30
+  }
+###
