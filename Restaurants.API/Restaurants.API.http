@@ -1,26 +1,29 @@
 @Restaurants.API_HostAddress = https://localhost:7105
 
 
-GET {{Restaurants.API_HostAddress}}/api/weatherforecast/currentDay
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants
 
 ###
 
-GET {{Restaurants.API_HostAddress}}/api/weatherforecast/example
+GET {{Restaurants.API_HostAddress}}/api/restaurants/1
 
 ###
-GET {{Restaurants.API_HostAddress}}/api/weatherforecast/23/currentDay?max=15
 
-###
-POST {{Restaurants.API_HostAddress}}/api/weatherforecast/
+POST {{Restaurants.API_HostAddress}}/api/restaurants
 Content-Type: application/json
-  "Jabub"
 
-  ###
+{
+  "Name": "The Indian kiss",
+  "Description": "A dining restaurant specializing in cuisine aroud the world.",
+  "Category": "Indian",
+  "HasDelivery": false,
+  "ContactEmail": "info@indi.com",
+  "ContactNumber": "555-1234",
+  "City": "New York",
+  "Street": "222 Main Street",
+  "PostalCode": "10-012"
+}
 
-POST {{Restaurants.API_HostAddress}}/api/weatherforecast/generate?count=3
-Content-Type: application/json
-  {
-    "MinTemperatureC": 10,
-    "MaxTemperatureC": 30
-  }
 ###
+GET https://localhost:7105/api/restaurants/5
