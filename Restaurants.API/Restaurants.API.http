@@ -14,16 +14,16 @@ POST {{Restaurants.API_HostAddress}}/api/restaurants
 Content-Type: application/json
 
 {
-  "Name": "The Indian kiss",
+  "Name": "The Mexican hug",
   "Description": "A dining restaurant specializing in cuisine aroud the world.",
-  "Category": "Indian",
-  "HasDelivery": false,
-  "ContactEmail": "info@indi.com",
-  "ContactNumber": "555-1234",
+  "Category": "Mexican",
+  "HasDelivery": true,
+  "ContactEmail": "info@mexi.com",
+  "ContactNumber": "555-1212",
   "City": "New York",
-  "Street": "222 Main Street",
-  "PostalCode": "10-012"
+  "Street": "222 MEx Street",
+  "PostalCode": "10-011"
 }
 
 ###
-GET https://localhost:7105/api/restaurants/5
+GET https://localhost:7105/api/restaurants/144
