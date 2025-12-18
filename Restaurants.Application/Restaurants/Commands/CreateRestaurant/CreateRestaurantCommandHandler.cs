@@ -14,7 +14,7 @@ public class CreateRestaurantCommandHandler(
 {
 	public async Task<int> Handle(CreateRestaurantCommand request, CancellationToken cancellationToken)
 	{
-		logger.LogInformation("Creating a new restaurant");
+		logger.LogInformation("Creating a new restaurant {@Restaurant}", request); //@ serialiserar objektet till en läsbar form i loggen
 		var restaurant = mapper.Map<Restaurant>(request);
 		int id = await restaurantsRepository.Create(restaurant);
 		return id;

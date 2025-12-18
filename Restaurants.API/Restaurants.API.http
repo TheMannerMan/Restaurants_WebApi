@@ -6,7 +6,7 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants
 
 ###
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants/1
+GET {{Restaurants.API_HostAddress}}/api/restaurants/3
 
 ###
 
@@ -14,7 +14,7 @@ POST {{Restaurants.API_HostAddress}}/api/restaurants
 Content-Type: application/json
 
 {
-  "Name": "The Test hug",
+  "Name": "The Test hug2",
   "Description": "A dining restaurant specializing in cuisine aroud the world.",
   "Category": "Mexican",
   "HasDelivery": true,
@@ -29,15 +29,15 @@ Content-Type: application/json
 GET https://localhost:7105/api/restaurants/144
 
 ###
-DELETE https://localhost:7105/api/restaurants/1
+DELETE https://localhost:7105/api/restaurants/2
 
 ###
 
-PATCH {{Restaurants.API_HostAddress}}/api/restaurants/9
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/12
 Content-Type: application/json
 
 {
-  "Name": "A sample patch",
+  "Name": "A sample patch3",
   "Description": "A indian test dining restaurant the world.",
-  "HasDelivery": true
+  "HasDelivery": false
 }

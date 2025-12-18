@@ -15,7 +15,8 @@ public static class ServiceCollectionExtensions
 	{
 		var connectionString = configuration.GetConnectionString("RestaurantsDb");
 		// Register infrastructure services here
-		services.AddDbContext<RestaurantsDbContext>(options => options.UseSqlServer(connectionString));
+		services.AddDbContext<RestaurantsDbContext>(options => options.UseSqlServer(connectionString)
+		.EnableSensitiveDataLogging()); // För att se detaljer om t.ex. id i loggningen
 
 		services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
 		services.AddScoped<IRestaurantsRepository, RestaurantsRepository>();
