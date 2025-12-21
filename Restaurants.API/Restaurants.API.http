@@ -14,9 +14,9 @@ POST {{Restaurants.API_HostAddress}}/api/restaurants
 Content-Type: application/json
 
 {
-  "Name": "The Test hug2",
+  "Name": "The Test hug22222",
   "Description": "A dining restaurant specializing in cuisine aroud the world.",
-  "Category": "Mexican",
+  "Category": "testetes",
   "HasDelivery": true,
   "ContactEmail": "info@mexi.com",
   "ContactNumber": "555-1212",
@@ -37,7 +37,7 @@ PATCH {{Restaurants.API_HostAddress}}/api/restaurants/12
 Content-Type: application/json
 
 {
-  "Name": "A sample patch3",
-  "Description": "A indian test dining restaurant the world.",
+  "Name": "A sample patch6",
+  "Description": "A indian mexian test dining restaurant the world.",
   "HasDelivery": false
 }
