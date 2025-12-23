@@ -26,10 +26,10 @@ Content-Type: application/json
 }
 
 ###
-GET https://localhost:7105/api/restaurants/144
+GET https://localhost:7105/api/restaurants/4
 
 ###
-DELETE https://localhost:7105/api/restaurants/22
+DELETE https://localhost:7105/api/restaurants/3
 
 ###
 
@@ -43,5 +43,16 @@ Content-Type: application/json
 }
 ###
 GET {{Restaurants.API_HostAddress}}/api/restaurants/test
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants/33/dishes
+Content-Type: application/json
+{
+  "Name": "Spaghetti Bolognese",
+  "Description": "Classica italian past dish with rice meat sauce",
+  "Price": 12.99,
+  "KiloCalories": 750
+}
 
 ###
