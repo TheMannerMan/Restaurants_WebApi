@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Restaurants.API.Middlewares;
 using Restaurants.Application.Extensions;
+using Restaurants.Domain.Entities;
 using Restaurants.Infrastructure.Extensions;
 using Restaurants.Infrastructure.Seeders;
 using Scalar.AspNetCore;
@@ -47,6 +48,8 @@ if (app.Environment.IsDevelopment()) // Scalar only visible during development.
 }
 
 app.UseHttpsRedirection();
+
+app.MapIdentityApi<User>();
 
 app.UseAuthorization();
 
