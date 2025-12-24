@@ -46,7 +46,7 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants/test
 
 ###
 
-POST {{Restaurants.API_HostAddress}}/api/restaurants/33/dishes
+POST {{Restaurants.API_HostAddress}}/api/restaurants/4/dishes
 Content-Type: application/json
 {
   "Name": "Spaghetti Bolognese",
@@ -54,5 +54,23 @@ Content-Type: application/json
   "Price": 12.99,
   "KiloCalories": 750
 }
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/4/dishes/9
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/4/dishes
+
+###
+
+@restaurantId=4
+@dishId=9
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/{{restaurantId}}/dishes/{{dishId}}
+
+###
+@restaurantId=4
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/{{restaurantId}}/dishes
 
 ###

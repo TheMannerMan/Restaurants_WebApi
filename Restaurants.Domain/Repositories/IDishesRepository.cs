@@ -9,7 +9,11 @@ public interface IDishesRepository
 {
 	//Task<IEnumerable<Dishes>> GetAllAsync();
 	//Task<Restaurant?> GetByIdAsync(int id);
-	Task<int> Create(Dish entity);
+	Task<int> CreateAsync(Dish entity);
+
+	Task DeleteByIdAsync(Dish entity);
+
+	Task DeleteAsync(IEnumerable<Dish> entities);
 
 	//Task Delete(Restaurant entity);
 	//Task SaveChanges();
