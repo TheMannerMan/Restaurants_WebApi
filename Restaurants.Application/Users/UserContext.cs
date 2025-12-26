@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
-namespace Restaurants.Application.User;
+namespace Restaurants.Application.Users;
 
 // IHttpContextAccessor provides access to the current HttpContext (if available) through the request pipeline.
 // Its implementation (HttpContextAccessor) uses AsyncLocal<T> to store and retrieve the current HTTP context,

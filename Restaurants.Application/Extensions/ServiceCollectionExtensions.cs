@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Restaurants.Application.Restaurants;
 using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 using Restaurants.Application.Restaurants.Dtos;
-using Restaurants.Application.User;
+using Restaurants.Application.Users;
 using Restaurants.Domain.Repositories;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 

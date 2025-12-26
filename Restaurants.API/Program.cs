@@ -49,7 +49,9 @@ app.UseHttpsRedirection();
 
 // Maps HTTP endpoints for Identity (POST /register, POST /login, POST /refresh, POST /forgotPassword, etc.)
 // These endpoints use the services registered in AddInfrastructure()
-app.MapGroup("api/identity").MapIdentityApi<User>();
+app.MapGroup("api/identity")
+	.WithTags("Identity")
+	.MapIdentityApi<User>();
 
 app.UseAuthorization();
 
