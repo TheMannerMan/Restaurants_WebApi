@@ -8,6 +8,7 @@ public static class WebApplicationsBuilderExtensions
 {
 	public static void AddPresentation(this WebApplicationBuilder builder)
 	{
+		builder.Services.AddAuthentication();
 		builder.Services.AddOpenApi(options =>
 		{
 			options.AddDocumentTransformer((document, context, cancellationToken) =>

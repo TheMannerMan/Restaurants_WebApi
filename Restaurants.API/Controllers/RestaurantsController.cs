@@ -7,21 +7,26 @@ using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
 using Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 using Restaurants.Application.Restaurants.Dtos;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Restaurants.API.Controllers
 {
 	[ApiController]
 	[Route("api/restaurants")]
+	[Authorize] // Add authrozation for the whole controller and its endpoints.
 	public class RestaurantsController(IMediator mediator) : ControllerBase
 	{
 
 		[HttpGet("test")]
+		
 		public IActionResult Test()
 		{
 			throw new Exception("Test exception from controller");
 		}
 
 		[HttpGet]
+		[AllowAnonymous] //Allows anonymous access to this endpoint, bypassing the controller-level authorization requirement.
+		//[Authorize]  - adds authorization for the specifik endpoint
 		public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll()
 		{
 			var restaurants = await mediator.Send(new GetAllRestaurantsQuery());
