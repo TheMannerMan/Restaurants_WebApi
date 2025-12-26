@@ -16,14 +16,6 @@ namespace Restaurants.API.Controllers
 	[Authorize] // Add authrozation for the whole controller and its endpoints.
 	public class RestaurantsController(IMediator mediator) : ControllerBase
 	{
-
-		[HttpGet("test")]
-		
-		public IActionResult Test()
-		{
-			throw new Exception("Test exception from controller");
-		}
-
 		[HttpGet]
 		[AllowAnonymous] //Allows anonymous access to this endpoint, bypassing the controller-level authorization requirement.
 		//[Authorize]  - adds authorization for the specifik endpoint

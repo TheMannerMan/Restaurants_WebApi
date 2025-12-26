@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Restaurants.Application.Restaurants;
 using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 using Restaurants.Application.Restaurants.Dtos;
+using Restaurants.Application.User;
 using Restaurants.Domain.Repositories;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
@@ -18,5 +19,13 @@ public static class ServiceCollectionExtensions
 
 		services.AddValidatorsFromAssemblyContaining<CreateRestaurantCommandValidator>();
 		services.AddFluentValidationAutoValidation();
+
+		services.AddScoped<IUserContext, UserContext>();
+
+		// Registers IHttpContextAccessor as a singleton service in the DI container.
+		// This is required by UserContext (which takes IHttpContextAccessor as a constructor parameter)
+		// to access the current HTTP request context and extract user claims from HttpContext.User.
+		// Without this registration, UserContext cannot be resolved and will throw a DI exception.
+		services.AddHttpContextAccessor();
 	}
 }
