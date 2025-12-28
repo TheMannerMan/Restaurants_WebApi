@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Restaurants.Domain.Entities;
@@ -23,10 +24,13 @@ public static class ServiceCollectionExtensions
 
 		// AddIdentityApiEndpoints<User>() - Registers all Identity services in the DI container
 		//   (UserManager, SignInManager, validators, token providers, authentication schemes)
+		// AddRoles<IdentityRole>() - Enables role-based authorization by registering RoleManager<IdentityRole>
+		//   and related role services for managing and assigning roles to users
 		// AddEntityFrameworkStores<RestaurantsDbContext>() - Tells Identity to use your EF Core DbContext
 		//   to save users in the database
-		services.AddIdentityApiEndpoints<User>().
-			AddEntityFrameworkStores<RestaurantsDbContext>();
+		services.AddIdentityApiEndpoints<User>()
+			.AddRoles<IdentityRole>()
+			.AddEntityFrameworkStores<RestaurantsDbContext>();
 
 		// Register application services
 		services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();

@@ -1,6 +1,5 @@
 @Restaurants.API_HostAddress = https://localhost:7105
-@token = CfDJ8OTqHB-rMAZHu4OWl1BxDwMm1-w_1aq2e2Q4KVkjvnwC16bWeFJ9lmOInL9dZmDZ32OX7eX3HmFOaNrj5-P6MnZBADcUzlBHfdLb3Zux3BtaiPjlHax0Q7_SVXbFuACeTwr_EkqguyJJeGuWkbReoPTRqX-PD0M6TRIFE2Ua3uxX-4Hr6kogR3zS9i086GyxcKeZBpDPscFuY-F91ekD0NiSzBnPczBJhhqNk9JYX4SStcMam3ztMfUu0pS9jD-NC0fXhy4lvJoPEYpj1nJNmzQH7WojA7DgU1EdOVAlzhkuJ4C1O_WdoEbxk5820NpVvaEYzAifQP9g5dmanc3ZAmsnVOq0l078m56har_6e85cNR7lm4yktBE1S4Y1My8u7vqqJ7ML3QSne7zxvaFXEQ6uDUzQcyLkgW7NwDzIh_Ot0smz7SgagCygvyoQPwCja6i4tZj_CxK5vov5uCYjZpiAmu3CUdQU6C44S9oCnrMg4D8Qat_P6ft7EU8Bx0Wyseede6RoNr4vPh5j9mFfC1t2bcH1zXIoxPpAxyoQUEA8OMNu1XR3xX03rwlgvFNKWc0OstIk7BZLmj4iMZWe3EtvrlqI5BQj7ve4cS4hkm32vNEn_7eIo99kRu6PVjIoIBOPAsIlwDN0nxe1Dhr3WWzYS-SN2NrZSK01Dmc4ri3tvIpAGjwSXOY-6A4Yq6EN2w
-
+@token = CfDJ8OTqHB-rMAZHu4OWl1BxDwODrWx4m2xsuZJ1Ii7cMjVsLFaf5cGTexLnaWvhKhiWAcG2pFPagod9aQ72qVqeAq5rxR6jkRi1oQ21fJBABiPRVstGpBQEt9rNrlT3NIk06tsfmp2fwmGKpKziyxdk_5wH_SYliE4YGv5B7Y29AAnh5nzaDx0LSwUvzksf5ZbySlkWNxRfZ0s7DSUOqOoM18P5779eIVT3gAoNtTP7J9Wkt8S86hFnIsPssIOMM-cfgGo2hUI3ZHlsnw0YBc0ZTQgfcHL_VXIjo09Vh24KjpxfPzabvEX39Uc0Xjvu8LSNtwACrGN7zW7X_tm5KeqqBO8fDc5GAsF9FjkHnfXzIfNEq-OyWFXGizGuIquKbJQEq9pmtfCjPS_JiYpNwcEhM2GlMvFbacBPQVeBVUgmvgu8JhQpTNAhFfnzFQbTj1CxJme4qydIsMMa3aH-V18zvlyWm8stuy_Gw1I1yftKlEJiJ52ENzlXGBPGRBJ9MxiwB5i9tzUXj7uKHTXXAvoOR-ZHOqa_QDTtxdasJ_e8JXUo9gkokUmF8IrUfiZHSGXade0uf9INASCBBuVEhcMmWvjZDslFQgEevSnHM79YKVPqQxZDyrJYp3dXdbnG4YCrlwA6GpuIf7pYhVK3oRaSQQjugLgg3Qcc1X-S1wptshUrOiemRCTFtmKA1ApYv6ZlbfVTj7jJio3d3Sdkx9Jgsmzq8yFisKMfzpT8w-bNJBVJQ_w4OOZJ4IRi56QH17eVIdR9YGY4SldEq3RYTMRtzEmjlGuD0vceF4ozTv6ukkpx
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants
 #Authorization: Bearer {{token}}
@@ -11,18 +10,18 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants/5
 ###
 
 POST {{Restaurants.API_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
 Content-Type: application/json
-
 {
-  "Name": "The Test hug22222",
+  "Name": "The Test hug33",
   "Description": "A dining restaurant specializing in cuisine aroud the world.",
-  "Category": "testetes",
+  "Category": "Indian",
   "HasDelivery": true,
   "ContactEmail": "info@mexi.com",
   "ContactNumber": "555-1212",
   "City": "New York",
-  "Street": "222 MEx Street",
-  "PostalCode": "10-011"
+  "Street": "132 MEx Street",
+  "PostalCode": "10-123"
 }
 
 ###
@@ -37,7 +36,7 @@ PATCH {{Restaurants.API_HostAddress}}/api/restaurants/12
 Content-Type: application/json
 
 {
-  "Name": "A sample patch6",
+  "Name": "A sample patch 8",
   "Description": "A indian mexian test dining restaurant the world.",
   "HasDelivery": false
 }
@@ -88,6 +87,16 @@ Content-Type: application/json
 POST {{Restaurants.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 {
- "email": "testuser@test.com",
+ "email": "owner@test.com",
+ "password": "Password1!"
+}
+
+###
+
+
+POST {{Restaurants.API_HostAddress}}/api/identity/register
+Content-Type: application/json
+{
+ "email": "owner@test.com",
  "password": "Password1!"
 }

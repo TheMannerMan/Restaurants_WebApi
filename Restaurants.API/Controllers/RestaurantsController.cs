@@ -8,6 +8,7 @@ using Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 using Restaurants.Application.Restaurants.Dtos;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Authorization;
+using Restaurants.Domain.Constants;
 
 namespace Restaurants.API.Controllers
 {
@@ -34,6 +35,7 @@ namespace Restaurants.API.Controllers
 		}
 
 		[HttpPost]
+		[Authorize(Roles = UserRoles.Owner)]
 		public async Task<IActionResult> CreateRestaurant(CreateRestaurantCommand command)
 		{
 			int id = await mediator.Send(command);
