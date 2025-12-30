@@ -58,7 +58,7 @@ public class RestaurantsUserClaimsPrincipalFactory(
 		// Later accessible via: User.FindFirst("Nationality")?.Value
 		if(user.Nationality != null)
 		{
-			id.AddClaim(new Claim("Nationality", user.Nationality));
+			id.AddClaim(new Claim(AppClaimTypes.Nationality, user.Nationality));
 		}
 
 		// Add DateOfBirth claim formatted as ISO 8601 date (yyyy-MM-dd)
@@ -66,7 +66,7 @@ public class RestaurantsUserClaimsPrincipalFactory(
 		// Can be used for age verification policies, personalization, etc.
 		if(user.DateOfBirth != null)
 		{
-			id.AddClaim(new Claim("DateOfBirth", user.DateOfBirth.Value.ToString("yyyy-MM-dd")));
+			id.AddClaim(new Claim(AppClaimTypes.DateOfBirth, user.DateOfBirth.Value.ToString("yyyy-MM-dd")));
 		}
 
 		// STEP 3: Create and return the ClaimsPrincipal

@@ -1,6 +1,5 @@
 @Restaurants.API_HostAddress = https://localhost:7105
-@token = CfDJ8OTqHB-rMAZHu4OWl1BxDwMqY70ajsySQguiNgAgTkvARL0UbMLC9Y3tRcRGlGOZyvLbpBT--labPVXkgFbr7pBdn5t8FQkrlXZmWfJWYjuWXbaZkSOdFIUv_4CdsljvGlUSlMpAXC214x0Hge_MIctKJhmQISHJcQOEzcYnQ_6pWcKtSS72Tnyxb2bziYx3z4XNR8YxSte50cox4P0FMX2eFDSzfXMUcQGnKx7mKyee9BxOu_iTfW234mjCiONgS50Ggxag8l0qNb0SWYh2Ball7licFpiEIyoM_oHDmoEpSMSbu32h0eSWlDUpjBKiWICfG4HZm0pgRF_Bu5F3MoIzfsqEdSEPzsnJSwm0jkuTG8WqdkWhYZDfGzrVvdVXGWKlZXnkzTolS6uXrnQ_nRfbKNgLuFA8-a0K1JXS08q49l0uYzzgjcZ3v670VovKwPqc0VV34WM0OnYEap9blm06Loq9SMt1yFUCh9xYw8edAj3wwoFtKPxl8fKtSEpn53hbFPGq6JBk4u3n0irUtAliyxo8fZN1vCQOmKjs807iVrNG4oUbmR-qHcO8F2_-kgGFqYifX_ZwKMVXEaAUUQwhXonU5dqTTlwDQvA7Vbzp7EBbmH9mN5wfPBLKmGHkgoZFhhN25k7KvVfBA3kFv5EcDmlfgNm3lqFVOuAvqac9Q9qb1YTKXe2FbwZJzHzkeuWA1fp2efNkr4e-GBhGT6VLSNJkcv7uUHr0Qd5gFkmWDSGH4v0AEy_y4RzsvvyksJJ0k3ujiqjCcWAOPgjKMgg
-
+@token = CfDJ8OTqHB-rMAZHu4OWl1BxDwMaAlRkyz-eEmnA2MgZZCHNrzVl-viQGnRBvHlbCwWJsWhIUD0-qFWARrKMd7BFndFh9oLfi5-tqlVP6wCvARIjR97I8uF7krkc-NYoK7oUkZKpG73Cvz5ze95y9HulaOcwDkt60asdzTw0z9LQcWNT6fmMKlonXwOS-Gi-Fl4fVHq6BQKBcvoluyybTosrL8B1RH_8j7jo5fhkbZPQMTYTjC3Giz27RhTw1G3thfsEBvwBncVG564IpoiSFZsQv8JdTbk3mKRhgg_VHpY8Nq4ehzpuk3jBnu-jMBpTL1GwanGJfI1yNhnsRKMJ2wtf4z7p3OqX7I1Fwqfq5VXIOmwHeAIF3Z_QY3Qjw1NEh3xhHQKP0E3XVuPRvgmOfANH4HD3Z4DJk6Dl7ukMJJc8C6u1Z5P6AqXi0hBIxroqOQOMgkHjNLMEr6OR0eGksPgvoCPo2hh1EuFCgMo8Go5u9QVnefT32m6qMdkxoZ3KBUG2lF30ANtZ1AA0aYjOY4rMhVbgLAS-pf4MejjrzyII11fQh6l8jzXSLV_KLSX2GxmwDJw5FaHYSAI7gpmIkN5j7e6yo_NwSVJhodXynKxWDq6wiJd58scj1NzV6B4kJstczFaZAj_AOfYkighVTvIbC04CTKEWA9YmKl6WcEJUWkFHJqeTvvIJ4xxxAeMT1WDGeJG62anTgHOCf-EhRgJIb5mo7Bnjj3iEYztdCx_e05Fqb-G-N0_DjB8ZWCxFMUQUTOrpOFW95ZYsSFMIg1KkNbO8AKR2VMks3o8w3uOmMwETImmNoUPaucH7R44fMv_0-K5gYjHkWjeANLGRVYZd2eA
 GET {{Restaurants.API_HostAddress}}/api/restaurants
 Authorization: Bearer {{token}}
 ###
@@ -87,7 +86,7 @@ Content-Type: application/json
 POST {{Restaurants.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 {
- "email": "testuser@test.com",
+ "email": "admin@test.com",
  "password": "Password1!"
 }
 
@@ -100,3 +99,15 @@ Content-Type: application/json
  "email": "owner@test.com",
  "password": "Password1!"
 }
+
+###
+
+PATCH {{Restaurants.API_HostAddress}}/api/identity/user
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+  "DateOfBirth": null,
+  "Nationality": "Finnish"
+}
+
+###
