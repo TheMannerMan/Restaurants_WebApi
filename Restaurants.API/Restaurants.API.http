@@ -1,5 +1,5 @@
 @Restaurants.API_HostAddress = https://localhost:7105
-@token = CfDJ8OTqHB-rMAZHu4OWl1BxDwN53PUpk1xiVvynzgAbDXriPmhPbOBHupwg99aNv6RpzoLoiCMOsN07wy420lRyoMjF9v5HUy9xfSDO77WxSjo0xgPf0RicnHgsMWu9jJwhILSQNSZRbjAFQrgtaGTCIYmhdJKMqfok3y2_lGSH2Csj6_SbEOv6eAw5049ewiEmzHidbJLgbFOxW7blP5XVHg9D63g_x9sk-nGrFATIShI2uxTEsg8cfFJk2oBHlPr_mFvvoMfOKEh5cp33SnF0GbGuwNs-NQvipuZ7XDhRf0LsaH7XlVW8a4g_eZ7fcTxH3K8IdoDfaalPkCup03t-u8Is-Ry_zpWFc0ZO-RLTSAFH2rydCgUrbpWaC7slMsTL6JlC9_9nSFkZO7gHMaZKVLaWoZTJdwmkRi_GVWoGXPsY1Pm4AL-7XCedPbLE0_59zLFsfYxG2pqqvJ9qLsS77aY_3Bl4Ec52ONafT7VH35-j5lZAeS9rXXBVI8lIn_23GoFpZuTah-fcfVb9g94skMWJv5fIn7jvC6-9eIXd4UWDObkx53n7mhPJwQyFsCJ4SIQXemypY5WxVOwPBzXkPZq1QTaohO-byOBfobvZaNjw5ZBulcQx3j4MCMkXZjteIctcoPGcq273If-_P8F_c6npeMS0UNFB5OGPb09dH_J148-p9vcjbjY2rWU-ZitKaIpJj9hIvnIYmp8pY-HlUPL_LnSlce-6HH4XNlPoQ1k0eAs_wL-x-S_vqQ_H8ool64lON0q24y71YkJy-860DKxArInbdVo9OG4Iz6wNKUVaU1nj_GDo_DEUg4Co126pjlGMXWmDPlWY_kMlV3MWAP0CovvC9deH9SaFya1Ovmfkv62GFUm11OlrZcg2IbSvhQ
+@token = CfDJ8OTqHB-rMAZHu4OWl1BxDwOMYMNIV3TwbVlD7mr-YmKHBAO9xrXqBQOeluE59pogfU8q-m0cFfrdakBZlzXd1nYX72wKhXyHuEPpLL9GqzZECIXAQlxZAUwe4Uxu2h4Gsm3Dc9m3bi1ODnZsy0kFQC9RM1pyEDvhVWe_mqOqAAJiHQLk5lPTBrEde9G3y-ZCccyGWqwR0V3LX6NZb-eZWchIlMERcdDMs8PYiDk-oyAEiq5IRh02n67E9d4FC0sjsdYFsuiC7ANQB6BkRECcN0Hp-UojMEfnzwNfwE2YXMhpJUt8x4PQdfgH4TY36xt8Ht72Jp_p6R_L-EfKAi-fUtjEK2PYc2KA7Nr6tzo8f2lc2h11yzlq1YanaKQ1wE8dccQljpS44mmf_k3RY9Bb1nssP2zW80pSabGNFlbFKjxaRXv8_t7JJ6fkjtiY99t6srt6TZ7qUqEoy3hu_ZEFsSIz2QclVTBmxVu6nN-h0UnYxNeSwYlfnE22iM-neEF3JeOqaAhaaTqnncuCVB3V91ani5EqHu7x93iHQuNVqlS3V26iD5bmaAQyV-gNEOSApcN7XxzCuyKh8z3V8kfcWc2SmwnxqMVahiaJZhI6YHNv0amxr5OVoZgiewuLgLbo6ujjLJ6rz_mLwPlxx_wPmPeU-FDpAfG0tB7BEsl29gbCoh-II-a8zM1z27bKTgP4pLPMmGwVbfd1qye53govpVDmnQpz2hFnUuT---mgxWhkrNa14kF-aH9X8u9rJL8ILIqt_a9rHeBwJwYLroXlND8A2a2HLpvgavhQDFFp3gnp
 GET {{Restaurants.API_HostAddress}}/api/restaurants
 Authorization: Bearer {{token}}
 ###
@@ -12,7 +12,7 @@ POST {{Restaurants.API_HostAddress}}/api/restaurants
 Authorization: Bearer {{token}}
 Content-Type: application/json
 {
-  "Name": "The Test hug33",
+  "Name": "Owner restaurant",
   "Description": "A dining restaurant specializing in cuisine aroud the world.",
   "Category": "Indian",
   "HasDelivery": true,
@@ -86,7 +86,7 @@ Content-Type: application/json
 POST {{Restaurants.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 {
- "email": "admin@test.com",
+ "email": "owner@test.com",
  "password": "Password1!"
 }
 
