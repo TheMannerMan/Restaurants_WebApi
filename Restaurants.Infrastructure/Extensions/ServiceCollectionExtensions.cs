@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Restaurants.Domain.Entities;
+using Restaurants.Domain.Interfaces;
 using Restaurants.Domain.Repositories;
 using Restaurants.Infrastructure.Authorization;
 using Restaurants.Infrastructure.Authorization.Requirements;
+using Restaurants.Infrastructure.Authorization.Services;
 using Restaurants.Infrastructure.Persistence;
 using Restaurants.Infrastructure.Repositories;
 using Restaurants.Infrastructure.Seeders;
@@ -16,36 +18,37 @@ namespace Restaurants.Infrastructure.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-	public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
-	{
-		
-		var connectionString = configuration.GetConnectionString("RestaurantsDb");
+    public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+    {
 
-		// Register DbContext with SQL Server provider
-		services.AddDbContext<RestaurantsDbContext>(options => options.UseSqlServer(connectionString)
-		.EnableSensitiveDataLogging()); // To see details like id values in logs
+        var connectionString = configuration.GetConnectionString("RestaurantsDb");
 
-		// AddIdentityApiEndpoints<User>() - Registers all Identity services in the DI container
-		//   (UserManager, SignInManager, validators, token providers, authentication schemes)
-		// AddRoles<IdentityRole>() - Enables role-based authorization by registering RoleManager<IdentityRole>
-		//   and related role services for managing and assigning roles to users
-		// AddEntityFrameworkStores<RestaurantsDbContext>() - Tells Identity to use your EF Core DbContext
-		//   to save users in the database
-		services.AddIdentityApiEndpoints<User>()
-			.AddRoles<IdentityRole>()
-			.AddClaimsPrincipalFactory<RestaurantsUserClaimsPrincipalFactory>()
-			.AddEntityFrameworkStores<RestaurantsDbContext>();
+        // Register DbContext with SQL Server provider
+        services.AddDbContext<RestaurantsDbContext>(options => options.UseSqlServer(connectionString)
+        .EnableSensitiveDataLogging()); // To see details like id values in logs
 
-		// Register application services
-		services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
-		services.AddScoped<IRestaurantsRepository, RestaurantsRepository>();
-		services.AddScoped<IDishesRepository, DishesRepository>();
-		services.AddAuthorizationBuilder()
-			.AddPolicy(PolicyNames.HasNationality, builder => builder.RequireClaim(AppClaimTypes.Nationality, "German", "Swedish"))
-			.AddPolicy(PolicyNames.AtLeast20,
-				builder => builder.AddRequirements(new MinimumAgeRequirements(20))
-			);
+        // AddIdentityApiEndpoints<User>() - Registers all Identity services in the DI container
+        //   (UserManager, SignInManager, validators, token providers, authentication schemes)
+        // AddRoles<IdentityRole>() - Enables role-based authorization by registering RoleManager<IdentityRole>
+        //   and related role services for managing and assigning roles to users
+        // AddEntityFrameworkStores<RestaurantsDbContext>() - Tells Identity to use your EF Core DbContext
+        //   to save users in the database
+        services.AddIdentityApiEndpoints<User>()
+            .AddRoles<IdentityRole>()
+            .AddClaimsPrincipalFactory<RestaurantsUserClaimsPrincipalFactory>()
+            .AddEntityFrameworkStores<RestaurantsDbContext>();
 
-		services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementsHandler>();
-	}
+        // Register application services
+        services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
+        services.AddScoped<IRestaurantsRepository, RestaurantsRepository>();
+        services.AddScoped<IDishesRepository, DishesRepository>();
+        services.AddScoped<IRestaurantAuthorizationService, RestaurantAuthorizationService>();
+        services.AddAuthorizationBuilder()
+            .AddPolicy(PolicyNames.HasNationality, builder => builder.RequireClaim(AppClaimTypes.Nationality, "German", "Swedish"))
+            .AddPolicy(PolicyNames.AtLeast20,
+                builder => builder.AddRequirements(new MinimumAgeRequirements(20))
+            );
+
+        services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementsHandler>();
+    }
 }
