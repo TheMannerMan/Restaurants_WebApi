@@ -1,11 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using Restaurants.Application.Users;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Net.Mime;
-using System.Text;
 
 namespace Restaurants.Infrastructure.Authorization.Requirements;
 

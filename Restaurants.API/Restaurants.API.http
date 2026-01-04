@@ -1,5 +1,5 @@
 @Restaurants.API_HostAddress = https://localhost:7105
-@token = CfDJ8OTqHB-rMAZHu4OWl1BxDwP7AWpOj7NKKmCAnsGALYDN-zE94DqCVsu-SYbCuRDCM87teHA0PXrukxfp_brtJ7tfWUP2ivN1NJoU8ERF2K2IZIW0jxwv6xj2GccBk6d8umml1FyDcy522SwfVkvpi5RzRnYQHn-7yvYeYRBb2XMKk2g9axOkWs1KXjLahtUGOssUt87tDHbhVGjKzvw3-tpShucMDxXNZ5bUoWCE27BPbBXMtc8tHPYJ6zcvBWEgl3-nQYR7XMF4zWUg1GwZApBivrC9NWoerqfX5ZJOxJFKT92KO22MPkQ6nlmp42FlxsKU-5WKrpHJBFUimzgYXtaaxeEyvEGezAioG1f4CzN8vu0MtejASPUImt7Oi6bCTUCH-aElOTly1Tsuu1jroTvkK5IVWvjdFApfxHl3xz5qFPrD8EXuYVQNc5zzIinOGfH_jSoaXRThM9pi3G0IWJdfAKvJDvoQNqJf6NRl1TnluVAUE5of73LQ1wmXRHlOZJkuBsksslI54pQXtK9BqgHmmWlJWNh0NHfDEEmhuclpfIiVbEHl-2O_-Mwt27Hy731kLu8r7c0Xxk_xwhECuZQ08o9b1UBU58URyqGbpP3szoGwPYRAdujO8kusS3jt2h8WrIK-0qdAytuhiGxSsPeF6Y_Q1UOUMOCCZbrC6xxSS08dbtmr9AwXw-nXJXfVITSs-AxTs_yst5kK58CRNuBI_SzExxfEjXq-EgaJJjLD-rIHFKyPMiC_VY8Zlrx5OqfWL1zO5DyDEed8TtUC7VZuD1miBuu3ORhMoNGhl1lB
+@token = CfDJ8OTqHB-rMAZHu4OWl1BxDwOYdodq5WjOYmGukdpM7a08ZuISsf0pA3ntcgYVYxOsJK_XzxLk8oegogzLnjZaR342d3dj-p2kH7P3xPkp_9ANdWmty4MZntrthlfjAfnX5ln0VYYHEvhuKUSSoYwBrp0O_kfGK0kYrjaX7DtWH63NCDwFXzb9Gk5Bw9UIooBruWZKteX4oq41KHaR9P9FTyBwqIZ6K1uPNE7kXNIbTJh0y4UJ6ifU9GBi1RT_Zu4LlkVfs5wenDnKRlASz2DXioheu9sZJMFkfJt7dwDwu9VLRndOAGGlu73qwCD7NFnp5x15bbZXS44hj6z5_5lJej6oZiPEg_kEzKY6tlnIwOgnArExnHs6rUXbs85_SrMEnBtIH5wzC8BMqNRQIoLmK-8jFYS-6FJ3OU7Wsl9c0X0jUlp960xj2v3yYXjvyRk2egnhzA3t_l6V9xS3j6gFXiTuB0q1YZ3Ou1Jxp1_vSx012kBd2fwhzdfy9gif-WuFN4YFIBjW6xegxCdC6XplgnXeru5snQIMNx5vTLc_5utee5QCVtDX4GJq2f_27D2i6Cnbi88rMyw0xIGAmgDEDcyXCbEinw5yxa55W4d8eZsBLSWFQpMyKQQLDjiKzinFxYisPYvXqnIhHwWBXt7MB9st5nOuxN01GnZM0vDBPw-LGi_Ae3LdoFTZWWZHU72QJA0caHB8dNm1Y_Rn7xfmg6cTNaCToCRRPcvrYp7_NaTHwN9cNI_5ADTZAosFRW_AQUJVtZrgl8UlKepH7FCE7C0_p2JIUpKUWbDfSzf9ckzO
 GET {{Restaurants.API_HostAddress}}/api/restaurants
 Authorization: Bearer {{token}}
 ###
@@ -12,7 +12,7 @@ POST {{Restaurants.API_HostAddress}}/api/restaurants
 Authorization: Bearer {{token}}
 Content-Type: application/json
 {
-  "Name": "Owner restaurant4",
+  "Name": "Owner restaurant5",
   "Description": "A dining restaurant specializing in cuisine aroud the world.",
   "Category": "Indian",
   "HasDelivery": true,
@@ -77,7 +77,7 @@ POST {{Restaurants.API_HostAddress}}/api/identity/register
 Content-Type: application/json
 
 {
- "email": "testuser@test.com",
+ "email": "owner2@test.com",
  "password": "Password1!"
 }
 
@@ -86,7 +86,7 @@ Content-Type: application/json
 POST {{Restaurants.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 {
- "email": "owner@test.com",
+ "email": "owner2@test.com",
  "password": "Password1!"
 }
 
@@ -108,6 +108,16 @@ Authorization: Bearer {{token}}
 {
   "DateOfBirth":  "2000-01-01",
   "Nationality": "Finnish"
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/userRole
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+  "UserEmail": "owner2@test.com",
+  "RoleName": "Owner"
 }
 
 ###

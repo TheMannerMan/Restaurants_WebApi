@@ -46,9 +46,12 @@ public static class ServiceCollectionExtensions
         services.AddAuthorizationBuilder()
             .AddPolicy(PolicyNames.HasNationality, builder => builder.RequireClaim(AppClaimTypes.Nationality, "German", "Swedish"))
             .AddPolicy(PolicyNames.AtLeast20,
-                builder => builder.AddRequirements(new MinimumAgeRequirements(20))
+                builder => builder.AddRequirements(new MinimumAgeRequirements(20)))
+            .AddPolicy(PolicyNames.CreatedAtleast2Restaurants, 
+                builder => builder.AddRequirements(new CreatedMultipleRestaurantsRequirement(2))
             );
 
         services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementsHandler>();
+        services.AddScoped<IAuthorizationHandler, CreatedMultipleRestaurantsRequirementHandler>();
     }
 }

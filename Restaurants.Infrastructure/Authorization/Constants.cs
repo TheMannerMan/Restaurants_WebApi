@@ -4,6 +4,7 @@ public static class PolicyNames
 {
     public const string HasNationality = nameof(HasNationality);
     public const string AtLeast20 = nameof(AtLeast20);
+    public const string CreatedAtleast2Restaurants = nameof(CreatedAtleast2Restaurants);
 
 }
 
