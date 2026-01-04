@@ -19,12 +19,12 @@ namespace Restaurants.API.Controllers
 	public class RestaurantsController(IMediator mediator) : ControllerBase
 	{
 		[HttpGet]
-		[Authorize(Policy = PolicyNames.CreatedAtleast2Restaurants)]
-		//[AllowAnonymous] //Allows anonymous access to this endpoint, bypassing the controller-level authorization requirement.
+		[AllowAnonymous] //Allows anonymous access to this endpoint, bypassing the controller-level authorization requirement.
+		//[Authorize(Policy = PolicyNames.CreatedAtleast2Restaurants)]
 		//[Authorize]  - adds authorization for the specifik endpoint
-		public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll()
+		public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll([FromQuery] GetAllRestaurantsQuery query)
 		{
-			var restaurants = await mediator.Send(new GetAllRestaurantsQuery());
+			var restaurants = await mediator.Send(query);
 			return Ok(restaurants);
 
 		}
