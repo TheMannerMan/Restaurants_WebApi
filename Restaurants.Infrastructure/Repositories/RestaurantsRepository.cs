@@ -26,15 +26,42 @@ internal class RestaurantsRepository(RestaurantsDbContext dbContext) : IRestaura
         var restaurants = await dbContext.Restaurants.ToListAsync();
         return restaurants;
     }
-    public async Task<IEnumerable<Restaurant>> GetAllMatchingAsync(string? searchPhrase)
+    public async Task<(IEnumerable<Restaurant>, int)> GetAllMatchingAsync(string? searchPhrase, int pageSize, int pageNumber)
     {
         var searchPhraseToLower = searchPhrase?.ToLower();
 
-        var restaurants = await dbContext.Restaurants
+        var baseQuery = dbContext.Restaurants
             .Where(r => searchPhrase == null || (r.Name.ToLower().Contains(searchPhraseToLower) ||
-                                                r.Description.ToLower().Contains(searchPhraseToLower)))
-                        .ToListAsync();
-        return restaurants;
+                                                r.Description.ToLower().Contains(searchPhraseToLower)));
+
+        var totalCount = await baseQuery.CountAsync();
+
+        var restaurants = await baseQuery
+            .Skip(pageSize * (pageNumber - 1))
+            .Take(pageSize)
+            .ToListAsync();
+
+        //Alternatives bellow:
+        /*
+         Alternative using EF.Functions.Like for case-insensitive search
+        var restaurants = await dbContext.Restaurants
+            .Where(r => searchPhrase == null || (EF.Functions.Like(r.Name, $"%{searchPhrase}%") ||
+                                                EF.Functions.Like(r.Description, $"%{searchPhrase}%")))
+            .ToListAsync();
+         
+        Altenrative for better better readablity:
+        if (string.IsNullOrWhiteSpace(searchPhrase))
+        return await dbContext.Restaurants.ToListAsync();
+
+        var sp = searchPhrase!.ToLower();
+        return await dbContext.Restaurants
+            .Where(r => r.Name.ToLower().Contains(sp) || r.Description.ToLower().Contains(sp))
+            .ToListAsync();
+
+         */
+
+
+        return (restaurants, totalCount);
     }
 
 
