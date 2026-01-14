@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Restaurants.Domain.Entities;
 using Restaurants.Domain.Interfaces;
 using Restaurants.Domain.Repositories;
@@ -18,14 +20,21 @@ namespace Restaurants.Infrastructure.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+    public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment? environment = null)
     {
 
         var connectionString = configuration.GetConnectionString("RestaurantsDb");
 
         // Register DbContext with SQL Server provider
-        services.AddDbContext<RestaurantsDbContext>(options => options.UseSqlServer(connectionString)
-        .EnableSensitiveDataLogging()); // To see details like id values in logs
+        services.AddDbContext<RestaurantsDbContext>(options => 
+        {
+            options.UseSqlServer(connectionString);
+            // Only enable sensitive data logging in Development to avoid exposing sensitive data in production logs
+            if (environment?.IsDevelopment() ?? false)
+            {
+                options.EnableSensitiveDataLogging();
+            }
+        });
 
         // AddIdentityApiEndpoints<User>() - Registers all Identity services in the DI container
         //   (UserManager, SignInManager, validators, token providers, authentication schemes)
