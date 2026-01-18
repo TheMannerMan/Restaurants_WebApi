@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Restaurants.API\Restaurants.API.csproj" />
-    <ProjectReference Include="..\Restaurants.Domain\Restaurants.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Restaurants.API\Restaurants.API.csproj" />
+    <ProjectReference Include="..\..\src\Restaurants.Domain\Restaurants.Domain.csproj" />
   </ItemGroup>
 
 </Project>
