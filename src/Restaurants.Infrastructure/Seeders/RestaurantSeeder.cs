@@ -2,6 +2,7 @@
 using Restaurants.Domain.Entities;
 using Restaurants.Infrastructure.Persistence;
 using Restaurants.Domain.Constants;
+using Microsoft.EntityFrameworkCore;
 
 namespace Restaurants.Infrastructure.Seeders;
 
@@ -9,6 +10,12 @@ internal class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSee
 {
 	public async Task Seed()
 	{
+        // Check if there are any pending migrations and apply them automatically to ensure database schema is up to date
+        if (dbContext.Database.GetPendingMigrations().Any())
+		{
+			await dbContext.Database.MigrateAsync();
+		}
+
 		if (await dbContext.Database.CanConnectAsync())
 		{
 			if (!dbContext.Restaurants.Any())
@@ -51,9 +58,16 @@ internal class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSee
 
 	private IEnumerable<Restaurant> GetRestaurants()
 	{
+
+		User owner = new User()
+		{
+			Email = "seed-user@test.com"
+		};
+
 		List<Restaurant> restaurants = [
 			new(){
-				Name = "KFC",
+				Owner = owner,
+                Name = "KFC",
 				Category = "Fast Food",
 				Description = "Kentucky Fried Chicken is a fast food restaurant chain that specializes in fried chicken.",
 				ContactEmail = "contact@kfc.com",
@@ -77,7 +91,8 @@ internal class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSee
 				}
 			},
 			new Restaurant(){
-				Name = "McDonald's",
+                Owner = owner,
+                Name = "McDonald's",
 				Category = "Fast Food",
 				Description = "McDonald's is a global fast food restaurant chain known for its burgers and fries.",
 				ContactEmail = "contact@mcdonalds.com",
