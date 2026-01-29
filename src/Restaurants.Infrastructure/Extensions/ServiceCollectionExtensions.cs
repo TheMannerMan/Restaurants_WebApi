@@ -11,9 +11,11 @@ using Restaurants.Domain.Repositories;
 using Restaurants.Infrastructure.Authorization;
 using Restaurants.Infrastructure.Authorization.Requirements;
 using Restaurants.Infrastructure.Authorization.Services;
+using Restaurants.Infrastructure.Configuration;
 using Restaurants.Infrastructure.Persistence;
 using Restaurants.Infrastructure.Repositories;
 using Restaurants.Infrastructure.Seeders;
+using Restaurants.Infrastructure.Storage;
 
 
 namespace Restaurants.Infrastructure.Extensions;
@@ -62,5 +64,11 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementsHandler>();
         services.AddScoped<IAuthorizationHandler, CreatedMultipleRestaurantsRequirementHandler>();
+
+        // Configure the Options pattern for BlobStorageSettings by binding values from the "BlobStorage" 
+        // section of appsettings.json to the BlobStorageSettings class. This allows strongly-typed access 
+        // to configuration values by injecting IOptions<BlobStorageSettings> into services that need it.
+        services.Configure<BlobStorageSettings>(configuration.GetSection("BlobStorage"));
+        services.AddScoped<IBlobStorageService, BlobStorageService>();
     }
 }
