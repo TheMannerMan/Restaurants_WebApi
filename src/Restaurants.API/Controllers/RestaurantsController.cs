@@ -75,11 +75,18 @@ namespace Restaurants.API.Controllers
         {
             using var stream = file.OpenReadStream();
 
+            // Workaround for Scalar UI limitation: Scalar sends "filename" as a generic default value 
+            // instead of the actual file name in the Content-Disposition header. This is a known issue
+            // with OpenAPI test UIs. Postman and other proper HTTP clients send the real filename correctly.
+            // When Scalar is used, we generate a unique GUID to avoid file naming conflicts.
+            string fileName = file.FileName;
+            if (fileName == "filename")
+                fileName = Guid.NewGuid().ToString();
 
-            var command = new UploadRestaurantLogoCommand
+          var command = new UploadRestaurantLogoCommand
             {
                 RestaurantId = id,
-                FileName = file.FileName,
+                FileName = fileName,
                 File = stream
             };
 
