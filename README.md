@@ -283,10 +283,6 @@ Refer to the [Issues](https://github.com/TheMannerMan/Restaurants_WebApi/issues)
 
 This is a personal reference project, but feedback and suggestions are welcome via Issues.
 
-## License
-
-MIT License - Feel free to use this as a template for your projects.
-
 ## Author
 
 [TheMannerMan](https://github.com/TheMannerMan)
