@@ -74,7 +74,7 @@ namespace Restaurants.API.Controllers
         public async Task<IActionResult> UploadLogo([FromRoute] int id, IFormFile file)
         {
             using var stream = file.OpenReadStream();
-
+            Console.WriteLine($"Controller - Length: {stream.Length}, Position: {stream.Position}");
             // Workaround for Scalar UI limitation: Scalar sends "filename" as a generic default value 
             // instead of the actual file name in the Content-Disposition header. This is a known issue
             // with OpenAPI test UIs. Postman and other proper HTTP clients send the real filename correctly.
@@ -86,7 +86,7 @@ namespace Restaurants.API.Controllers
           var command = new UploadRestaurantLogoCommand
             {
                 RestaurantId = id,
-                FileName = fileName,
+                FileName = $"{id}-{fileName}",
                 File = stream
             };
 

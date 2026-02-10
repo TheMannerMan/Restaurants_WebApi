@@ -15,6 +15,10 @@ internal class BlobStorageService(IOptions<BlobStorageSettings> blobStorageSetti
     private readonly BlobStorageSettings _blobStorageSettings = blobStorageSettingsOptions.Value;
     public async Task<string> UploadToBlobAsync(Stream data, string fileName)
     {
+
+        if (data.CanSeek)
+            data.Position = 0;
+        
         var blobServiceClient = new BlobServiceClient(_blobStorageSettings.ConnectionString);
         var containerClient = blobServiceClient.GetBlobContainerClient(_blobStorageSettings.LogosContainerName);
 
